@@ -1,0 +1,47 @@
+# This is the parameter configuration file for PaddleSpeech Offline Serving.
+
+#################################################################################
+#                             SERVER SETTING                                    #
+#################################################################################
+host: 0.0.0.0
+port: 8090
+
+# The task format in the engin_list is: <speech task>_<engine type>
+# task choices = ['asr_python', 'asr_inference', 'tts_python', 'tts_inference', 'cls_python', 'cls_inference', 'text_python', 'vector_python']
+protocol: 'http'
+engine_list: ['tts_python']
+
+
+#################################################################################
+#                                ENGINE CONFIG                                  #
+#################################################################################
+
+
+################################### TTS #########################################
+################### speech task: tts; engine_type: python #######################
+tts_python:
+    # am (acoustic model) choices=['speedyspeech_csmsc', 'fastspeech2_csmsc',
+    #                             'fastspeech2_ljspeech', 'fastspeech2_aishell3',
+    #                             'fastspeech2_vctk', 'fastspeech2_mix',
+    #                             'tacotron2_csmsc', 'tacotron2_ljspeech']
+    am: 'fastspeech2_csmsc'   
+    am_config: 
+    am_ckpt: 
+    am_stat: 
+    phones_dict: 
+    tones_dict: 
+    speaker_dict: 
+
+
+    # voc (vocoder) choices=['pwgan_csmsc', 'pwgan_ljspeech', 'pwgan_aishell3',
+    #                        'pwgan_vctk', 'mb_melgan_csmsc', 'style_melgan_csmsc',
+    #                        'hifigan_csmsc', 'hifigan_ljspeech', 'hifigan_aishell3',
+    #                        'hifigan_vctk', 'wavernn_csmsc']
+    voc: 'mb_melgan_csmsc'
+    voc_config: 
+    voc_ckpt: 
+    voc_stat: 
+
+    # others
+    lang: 'zh'
+    device:  # set 'gpu:id' or 'cpu'
